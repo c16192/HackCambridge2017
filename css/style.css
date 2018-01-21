@@ -54,9 +54,33 @@ body {
     font-size: 12px;
   }
 
-  #gallery {
-  }
   #gallery div {
     margin: 0;
     padding: 10px 5px;
+  }
+
+  .img-forwards {
+    background: #00a;
+    border-color: #007;
+  }
+  .img-forwards + .caption {
+    background: #00a;
+    border-color: #007;
+  }
+
+  .img-angles {
+    background: #fa0;
+    border-color: #f90;
+  }
+  .img-angles + .caption {
+    background: #fa0;
+    border-color: #f90;
+  }
+  .img-sides {
+    background: #f00;
+    border-color: #a00;
+  }
+  .img-sides + .caption {
+    background: #f00;
+    border-color: #a00;
   }

@@ -16,7 +16,7 @@ function setTaskTitle(){
 }
 
 function gameStart() {
-    var inittasklist = ["traffic", "bus", "house"];
+    var inittasklist = ["bus", "house"];
     var i;
     for(i = 0; i < inittasklist.length; i++){
         addTaskElement(inittasklist[i]);
@@ -28,6 +28,18 @@ function gameStart() {
     titlelist.classList.remove("bg-succeess");
     titlelist.classList.add("bg-warning");
     titlelist.innerHTML = "Keys you found so far: 0";
+
+    var additionaltasklist = ["traffic", "taxi", "church", "school"];
+    var id = setInterval(addMoreTasks, 10000);
+
+    function addMoreTasks(){
+        if(!duringGame || additionaltasklist.length == 0){
+            clearInterval(id);
+        } else {
+            addTaskElement(additionaltasklist.shift());
+            console.log(additionaltasklist);
+        }
+    }
 }
 
 // Create a new list item when clicking on the "Add" button

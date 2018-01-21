@@ -43,3 +43,46 @@ function processImage() {
         alert(errorString);
     });
 };
+
+function classifyImage(imageUrl) {
+    var subscriptionKey = "eff9bb27cc5745ccbbaa18939b65b04d";
+    var request_url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.1/Prediction/7cee6b20-c5d1-45bc-8f3f-ccab49d66910/url";
+
+    // Perform the REST API call.
+    $.ajax({
+        url: request_url,
+
+        // Request headers.
+        beforeSend: function(xhrObj){
+            xhrObj.setRequestHeader("Content-Type","application/json");
+            xhrObj.setRequestHeader("Prediction-Key", subscriptionKey);
+        },
+
+        type: "POST",
+
+        // Request body.
+        data: '{"Url": ' + '"' + imageUrl + '"}',
+    })
+
+    .done(function(data) {
+        var res = data["Predictions"];
+        var i;
+        var max = 0;
+        var tag = "";
+        for(i in res){
+            var temp = parseFloat(res[i]["Probability"]);
+            if(max < temp){
+                max = temp;
+                tag = res[i]["Tag"];
+            }
+        }
+        addTag(tag);
+    })
+
+    .fail(function(jqXHR, textStatus, errorThrown) {
+        // Display error message.
+        var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+        errorString += (jqXHR.responseText === "") ? "" : jQuery.parseJSON(jqXHR.responseText).message;
+        alert(errorString);
+    });
+};
