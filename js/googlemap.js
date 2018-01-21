@@ -25,7 +25,7 @@ function getViewUrl(){
     var pitch = panorama.getPov().pitch;
     var zoom = panorama.getZoom();
     var fov = 180 / Math.pow(2,zoom);
-    var imageUrl = "https://maps.googleapis.com/maps/api/streetview?size=640x640&location="+position+"&heading="+heading+"&pitch="+pitch+"&fov="+fov+"&key=AIzaSyDHBJ0jerBtpGsetlWZRk77t50AxHqZtXI";
+    var imageUrl = "https://maps.googleapis.com/maps/api/streetview?size=640x640&location="+position+"&heading="+heading+"&pitch="+pitch+"&fov="+fov+"&key="+MAP_API_KEY;
     return imageUrl;
 }
 

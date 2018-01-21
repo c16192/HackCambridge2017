@@ -1,6 +1,6 @@
 function processImage() {
     var imageUrl = getViewUrl();
-    var subscriptionKey = "7c6641e5a26e488c9ae34ce4ad2fb34b";
+    var subscriptionKey = MS_CV_KEY;
     var uriBase = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze";
     var params = {
         "visualFeatures": "Description",
@@ -45,7 +45,7 @@ function processImage() {
 };
 
 function classifyImage(imageUrl) {
-    var subscriptionKey = "eff9bb27cc5745ccbbaa18939b65b04d";
+    var subscriptionKey = MS_Custom_KEY;
     var request_url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.1/Prediction/7cee6b20-c5d1-45bc-8f3f-ccab49d66910/url";
 
     // Perform the REST API call.
